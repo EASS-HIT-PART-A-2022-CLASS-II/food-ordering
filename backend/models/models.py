@@ -1,6 +1,6 @@
 from pydantic import BaseModel
 from datetime import datetime
-from models.types import *
+from backend.models.types import Currency,RestaurantType,PaymentMethod
 
 class Address(BaseModel):
     city:str
@@ -20,7 +20,7 @@ class Restaurant(BaseModel):
     name: str
     type:RestaurantType
     address:Address
-    manu: list[Dish]
+    menu: list[Dish]
 
 class CreditCardDetails(BaseModel):
     cardNumber:str

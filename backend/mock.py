@@ -1,5 +1,5 @@
-from models.models import Restaurant,Dish,Address
-from models.types import RestaurantType,Currency
+from backend.models.models import *
+from backend.models.types import *
 
 dish1=Dish(
     name="Hamburger",
@@ -21,7 +21,7 @@ restaurant1= Restaurant(
     street="Rotchild",
     street_number=100,
     ),
-    manu= [dish1,dish2]
+    menu= [dish1,dish2]
 )
 
 restaurant2= Restaurant(
@@ -32,7 +32,7 @@ restaurant2= Restaurant(
     street="Jabutinsky",
     street_number=34,
     ),
-    manu= [dish1]
+    menu= [dish1]
 )
 
 restaurants=[restaurant1,restaurant2]
