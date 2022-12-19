@@ -36,3 +36,10 @@ restaurant2= Restaurant(
 )
 
 restaurants=[restaurant1,restaurant2]
+
+order1= Order(
+    restaurantName="mcDonalds",
+    dishes=[dish2],
+    paymentMethod= PaymentMethod.cache,
+    paymentDetails=None
+)
