@@ -3,7 +3,7 @@
 Choose a restaurant by wanted features and order your favorite food!
 ## Getting Started
 
-###Prerequisites :
+### Prerequisites :
 - Docker
 - Git
 - python v3.10
