@@ -3,7 +3,7 @@
 Choose a restaurant by wanted features and order your favorite food!
 ## Getting Started
 
-###Prerequisites :
+### Prerequisites :
 - Docker
 - Git
 - python v3.10
@@ -15,11 +15,11 @@ git clone https://github.com/EASS-HIT-PART-A-2022-CLASS-II/food-ordering.git
 ```
 pip install -r backend/requirements.txt
 ```
-###Run locally
+### Run locally
 ```
 uvicorn backend.main:app --reload
 ```
-###Run tests
+### Run tests
 ```
 pip install Pytest
 pytest -q backend/test.py
