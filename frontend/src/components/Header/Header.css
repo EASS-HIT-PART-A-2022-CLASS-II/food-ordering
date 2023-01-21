@@ -1,0 +1,7 @@
+.Header {
+    background-color: #009688;
+    display: flex;
+    min-height: 10vh;
+    flex-direction: row;
+    justify-content: space-between;
+  }
