@@ -1,11 +1,14 @@
 from enum import Enum
 
 class RestaurantType(Enum):
-    chinese = 1
+    vegan = 1
     american = 2
     home_food = 3
     italian = 4
     bar = 5
+    mediterranean = 6
+    bistro=7
+    chef=8
 
 class Currency(Enum):
     ils = 1

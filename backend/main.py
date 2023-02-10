@@ -3,6 +3,10 @@ from backend.mock import *
 from backend.models.types import *
 from backend.models.models import Order
 from fastapi.middleware.cors import CORSMiddleware
+from pymongo.mongo_client import MongoClient
+from pymongo.server_api import ServerApi
+from backend.dbConnection.mongoRepository import *
+import awkward as ak
 
 app = FastAPI()
 origins = [
@@ -20,11 +24,17 @@ app.add_middleware(
 
 
 @app.get("/")
-def home():
-    return {"message":"This is The Default Page"}
+def getInitDate():
+    restaurantTypesKeys=ak.Array([e.value for e in RestaurantType])
+    restaurantTypesNames=ak.Array([e.name for e in RestaurantType])
+    dishesResult=get_all_dishes()
+    restaurantTypesResult=ak.zip({"index": restaurantTypesKeys, "name": restaurantTypesNames}).to_list()
+    return {"restaurantTypes":restaurantTypesResult,"dishes":dishesResult}
 
 # http://127.0.0.1:8000/restaurants/get-by-city?city=Tel%20Aviv
 @app.get("/restaurants/get-by-city")
+# collection= get_collection_object()
+#     obj=collection.find_one({ "name": "Roberta vinci" },{'_id': 0})
 def Get_restaurants_by_city(city:str):
     result=list(filter(lambda restaurant: restaurant.address.city == city, restaurants))
     return result
