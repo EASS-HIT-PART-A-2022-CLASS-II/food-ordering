@@ -34,13 +34,13 @@ export const cities=[
 		
 	},
 	{
-		label:"Rishon LeẔiyyon",
+		label:"Rishon LeZiyyon",
 		lat:"31.9500",
 		lng:"34.8000",
 		
 	},
 	{
-		label:"Petaẖ Tiqwa",
+		label:"Petah Tiqwa",
 		lat:"32.0833",
 		lng:"34.8833",
 		
@@ -49,6 +49,24 @@ export const cities=[
 		label:"Ashdod",
 		lat:"31.7978",
 		lng:"34.6503",
+		
+	},
+	{
+		label:"Pardes Hanna-Karkur",
+		lat:"32.4752557",
+		lng:"34.34.9826399",
+		
+	},
+	{
+		label:"Kfar Monash",
+		lat:"32.3475348",
+		lng:"34.9162242",
+		
+	},
+	{
+		label:"Rehovot",
+		lat:"31.8952532",
+		lng:"34.8105616",
 		
 	},
 	{
@@ -64,7 +82,7 @@ export const cities=[
 		
 	},
 	{
-		label:"Bené Beraq",
+		label:"Bene Beraq",
 		lat:"32.0807",
 		lng:"34.8338",
 		
@@ -112,7 +130,7 @@ export const cities=[
 		
 	},
 	{
-		label:"Herẕliyya",
+		label:"Herzliyya",
 		lat:"32.1556",
 		lng:"34.8422",
 		
@@ -160,9 +178,15 @@ export const cities=[
 		
 	},
 	{
-		label:"Nahariyya",
+		label:"Nahariya",
 		lat:"33.0036",
 		lng:"35.0925",
+		
+	},
+	{
+		label:"Degania Alef",
+		lat:"32.7084791",
+		lng:"35.5748582",
 		
 	},
 	{

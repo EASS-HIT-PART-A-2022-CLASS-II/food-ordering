@@ -5,19 +5,31 @@ import { ResultsPage } from './Pages/ResultsPage/ResultsPage';
 import { WelcomePage } from './Pages/WelcomePage/WelcomePage';
 import { ThemeProvider } from '@mui/material';
 import { theme } from './theme';
+import { getInitialData } from "src/network/requests"
+import { useState, useEffect } from 'react';
 
 function App() {
+  const [initialData, setInitialData] = useState(null);
+  const requestForInitData = async () => {
+    const res = await getInitialData();
+    setInitialData(res)
+  }
+  useEffect(() => {
+    requestForInitData();
+  }, [])
+
+
   return (
     <ThemeProvider theme={theme}>
-    <div className="App">
-    <BrowserRouter>
-      <Routes>
-        <Route path="/" element={<WelcomePage />}/>
-          <Route path="/restaurants" element={<ResultsPage />} />
-          {/*<Route path="*" element={<NoPage />} /> */}
-      </Routes>
-    </BrowserRouter>
-    </div>
+      <div className="App">
+        <BrowserRouter>
+          <Routes>
+            <Route path="/" element={<WelcomePage initialData={initialData} />} />
+            <Route path="/restaurants" element={<ResultsPage />} />
+            {/*<Route path="*" element={<NoPage />} /> */}
+          </Routes>
+        </BrowserRouter>
+      </div>
     </ThemeProvider>
   );
 }

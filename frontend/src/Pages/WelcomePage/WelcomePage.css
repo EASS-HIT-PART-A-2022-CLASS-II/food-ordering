@@ -9,22 +9,23 @@
     color: #009688;
 }
 
-.row{
+.row {
     display: flex;
     flex-direction: row;
     height: 50px;
     margin-bottom: 20px;
 }
 
-.option-button{
-    
+.option-button:active {
+    background: black;
 }
-.option-button:active{
+
+.option-button:active {
     color: whitesmoke;
     background-color: #009688;
 }
 
-.footer{
+.footer {
     margin-top: 30px;
     text-align: center;
 }
