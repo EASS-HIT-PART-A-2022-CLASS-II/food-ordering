@@ -7,12 +7,19 @@ import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import Popover from '@mui/material/Popover';
 import { RecommendationsList } from '../RecommendationsList/RecommendationsList';
+import { useNavigate } from 'react-router-dom';
 
 export const ResautantCard = (props) => {
-  const { restaurant } = props;
+  const navigate = useNavigate();
+  const { restaurant,setOrderFrom } = props;
 const [isOpenPopover,setIsOpenPopover]=useState(false);
   const handleRecommendationClick=()=>{
     setIsOpenPopover(true);
+  }
+
+  const handleOrderClick=()=>{
+    setOrderFrom(restaurant);
+    navigate("/order");
   }
 
   return (
@@ -29,7 +36,7 @@ const [isOpenPopover,setIsOpenPopover]=useState(false);
         </Typography>
       </CardContent>
       <CardActions>
-        <Button size="small">Order Now</Button>
+        <Button size="small" onClick={handleOrderClick}>Order Now</Button>
         <Button  onClick={handleRecommendationClick} size="small">See Recommendations</Button>
         <Popover id={restaurant.id}
           open={isOpenPopover}

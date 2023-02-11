@@ -1,10 +1,9 @@
 import { CircularProgress, List, ListItem, Typography } from "@mui/material"
-import { useEffect } from "react"
 import { Header } from "src/components/Header/Header"
 import { ResautantCard } from "src/components/ResautantCard/RestaurantCard"
 
 export const ResultsPage = (props) => {
-    const { searchResults,restaurantTypes } = props;
+    const { searchResults,restaurantTypes,setOrderFrom } = props;
 
     const updatedRestaurant=(index,restaurant)=>{
         const restaurantType=restaurantTypes.find((type)=>type.index===restaurant.type);
@@ -24,7 +23,7 @@ export const ResultsPage = (props) => {
                 <div className="body-container">
                     <List>
                         {searchResults.map((result, index) => {
-                            return  <ListItem><ResautantCard  restaurant={updatedRestaurant(index,result)} /></ListItem>
+                            return  <ListItem><ResautantCard setOrderFrom={setOrderFrom}  restaurant={updatedRestaurant(index,result)} /></ListItem>
                         })}
 
                     </List>

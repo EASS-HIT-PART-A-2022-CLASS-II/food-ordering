@@ -7,11 +7,14 @@ import { ThemeProvider } from '@mui/material';
 import { theme } from './theme';
 import { getInitialData, getRestaurantsByCity, getRestaurantsByDish, getRestaurantsByType } from "src/network/requests"
 import { useState, useEffect } from 'react';
+import { OrderPage } from './Pages/OrderPage/OrderPage';
+import { SuccessPage } from './Pages/SuccessPage/SuccessPage';
 
 function App() {
   const [initialData, setInitialData] = useState(null);
   const [searchFilter,setSearchFilter]=useState({id:0,value:0});
   const [searchResults,setSearchResults]=useState(null);
+  const [orderFrom,setOrderFrom]=useState(null);
 
   const requestForInitData = async () => {
     const res = await getInitialData();
@@ -59,8 +62,9 @@ function App() {
         <BrowserRouter>
           <Routes>
             <Route path="/" element={<WelcomePage setSearchFilter={setSearchFilter} initialData={initialData} />} />
-            <Route path="/restaurants" element={<ResultsPage restaurantTypes={initialData?.restaurantTypes} searchResults={searchResults}/>} />
-            {/*<Route path="*" element={<NoPage />} /> */}
+            <Route path="/restaurants" element={<ResultsPage setOrderFrom={setOrderFrom} restaurantTypes={initialData?.restaurantTypes} searchResults={searchResults}/>} />
+            <Route path="/order" element={<OrderPage restaurant={orderFrom} />} />
+            <Route path="/success" element={<SuccessPage/>} />
           </Routes>
         </BrowserRouter>
       </div>

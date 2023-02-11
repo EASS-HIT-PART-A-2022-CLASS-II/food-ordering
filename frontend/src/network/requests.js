@@ -15,3 +15,7 @@ export const getRestaurantsByCity=async (city)=>{
 export const getRestaurantsByDish=async (dishName)=>{
     return await (await axios.get(`http://127.0.0.1:8000/restaurants/get-by-dish?dish_name=${dishName}`)).data;
 }
+
+export const placeOrder=async (order)=>{
+    return (await axios.post(`http://127.0.0.1:8000/submit/place-order`,{order})).data;
+}

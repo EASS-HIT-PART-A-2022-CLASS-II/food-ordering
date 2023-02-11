@@ -46,5 +46,5 @@ def Get_restaurants_by_type(restaurant_type:int):
 def Get_restaurants_by_dish_name(dish_name):
     return get_restaurants_by_dish(dish_name)
 @app.post("/submit/place-order")
-def Place_order(order:Order):
+def Place_order(order):
     return {"message":"We successfully got your order!"}
