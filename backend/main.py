@@ -33,22 +33,18 @@ def getInitDate():
 
 # http://127.0.0.1:8000/restaurants/get-by-city?city=Tel%20Aviv
 @app.get("/restaurants/get-by-city")
-# collection= get_collection_object()
-#     obj=collection.find_one({ "name": "Roberta vinci" },{'_id': 0})
 def Get_restaurants_by_city(city:str):
-    result=list(filter(lambda restaurant: restaurant.address.city == city, restaurants))
-    return result
+    return get_restaurants_by_city(city)
 
 # http://127.0.0.1:8000/restaurants/get-by-type?restaurant_type=2
 @app.get("/restaurants/get-by-type")
 def Get_restaurants_by_type(restaurant_type:int):
-    return list(filter(lambda restaurant: restaurant.type.value == restaurant_type, restaurants))
+    return get_restaurants_by_type(restaurant_type)
 
-# http://127.0.0.1:8000/restaurants/get-by-dish?dish_name=Nuggets
+# http://127.0.0.1:8000/restaurants/get-by-dish?dish_name=pizza
 @app.get("/restaurants/get-by-dish")
 def Get_restaurants_by_dish_name(dish_name):
-    return list(filter(lambda restaurant: list(filter(lambda dish: dish.name == dish_name,restaurant.menu)), restaurants))
-
+    return get_restaurants_by_dish(dish_name)
 @app.post("/submit/place-order")
 def Place_order(order:Order):
     return {"message":"We successfully got your order!"}

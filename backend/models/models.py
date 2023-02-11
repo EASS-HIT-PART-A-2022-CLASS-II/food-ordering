@@ -5,7 +5,9 @@ from backend.models.types import Currency,RestaurantType,PaymentMethod
 class Address(BaseModel):
     city:str
     street:str
+    # building
     street_number:int
+    # coord: []
     latitude:float|None
     longtitude:float |None   
 

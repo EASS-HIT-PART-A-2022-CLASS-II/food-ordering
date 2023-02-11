@@ -20,3 +20,13 @@ def get_all_dishes():
     menues=list(set(menues))
     menues.sort()
     return menues
+
+def get_restaurants_by_city(city):
+    return list(collection.find({"address.city":city},{'_id': 0}))
+
+def get_restaurants_by_type(type):
+    return  list(collection.find({"type":type},{'_id': 0}))
+
+
+def get_restaurants_by_dish(dish_name):
+    return list(collection.find({"menu.name":dish_name},{'_id': 0}))
