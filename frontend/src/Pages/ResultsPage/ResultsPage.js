@@ -20,7 +20,7 @@ export const ResultsPage = (props) => {
     return (
         <div>
             <Header title="Search Results" />
-            {searchResults ?
+            {searchResults?.length>0?
                 <div className="body-container">
                     <List>
                         {searchResults.map((result, index) => {
@@ -29,8 +29,8 @@ export const ResultsPage = (props) => {
 
                     </List>
                 </div> : <div className="body-container">
-                    <Typography className="body-header" variant="h3">Please wait!</Typography>
-                    <CircularProgress />
+                    <Typography className="body-header" variant="h3">{searchResults?.length===0?'No Results Found':'Please wait!'}</Typography>
+                    {!searchResults&&<CircularProgress />}
                 </div>}
         </div>
     )
