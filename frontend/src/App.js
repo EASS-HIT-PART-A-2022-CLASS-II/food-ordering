@@ -11,6 +11,7 @@ import { useState, useEffect } from 'react';
 function App() {
   const [initialData, setInitialData] = useState(null);
   const [searchFilter,setSearchFilter]=useState({id:0,value:0});
+  const [searchResults,setSearchResults]=useState(null);
 
   const requestForInitData = async () => {
     const res = await getInitialData();
@@ -19,14 +20,17 @@ function App() {
 
   const requestRestaurantsByType = async (type) => {
     const res = await getRestaurantsByType(type);
+    setSearchResults(res);
   }
 
   const requestRestaurantsByCity = async (city) => {
     const res = await getRestaurantsByCity(city);
+    setSearchResults(res);
   }
 
   const requestRestaurantsByDish = async (dishName) => {
     const res = await getRestaurantsByDish(dishName);
+    setSearchResults(res);
   }
 
   useEffect(() => {
@@ -34,16 +38,18 @@ function App() {
   }, [])
 
   useEffect(() => {
-    console.log(searchFilter);
     if(searchFilter.id===1)
     {
       requestRestaurantsByCity(searchFilter.value)
     }else if(searchFilter.id===2)
     {
-      requestRestaurantsByType(searchFilter.value)
+      const restaurantType=initialData?.restaurantTypes.find((type)=>type.name===searchFilter.value);
+      console.log(restaurantType);
+      requestRestaurantsByType(restaurantType.index)
       
     }else if(searchFilter.id===3)
     {
+      console.log(searchFilter.value);
       requestRestaurantsByDish(searchFilter.value)
     }
   }, [searchFilter])
@@ -55,7 +61,7 @@ function App() {
         <BrowserRouter>
           <Routes>
             <Route path="/" element={<WelcomePage setSearchFilter={setSearchFilter} initialData={initialData} />} />
-            <Route path="/restaurants" element={<ResultsPage searchResults="searchResults"/>} />
+            <Route path="/restaurants" element={<ResultsPage restaurantTypes={initialData?.restaurantTypes} searchResults={searchResults}/>} />
             {/*<Route path="*" element={<NoPage />} /> */}
           </Routes>
         </BrowserRouter>

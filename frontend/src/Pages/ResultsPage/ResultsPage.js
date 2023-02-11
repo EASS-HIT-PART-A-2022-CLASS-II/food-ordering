@@ -1,21 +1,35 @@
-import { CircularProgress, List, Typography } from "@mui/material"
+import { CircularProgress, List, ListItem, Typography } from "@mui/material"
 import { useEffect } from "react"
 import { Header } from "src/components/Header/Header"
 import { ResautantCard } from "src/components/ResautantCard/RestaurantCard"
 
 export const ResultsPage = (props) => {
-    const { searchResults } = props;
+    const { searchResults,restaurantTypes } = props;
     useEffect(() => {
+     console.log(restaurantTypes);
+    }, [restaurantTypes])
 
-    }, [])
+    const updatedRestaurant=(index,restaurant)=>{
+        const restaurantType=restaurantTypes.find((type)=>type.index===restaurant.type);
+        restaurant.type=restaurantType?.name;
+        const grades=restaurant.grades.map((grade)=>{
+            grade.date=new Date(grade.date).toDateString()
+            return grade;
+        })
+        restaurant.grades=grades;
+        return { id: index, ...restaurant }
+    }
 
     return (
         <div>
-            <Header title="Search Results"/>
+            <Header title="Search Results" />
             {searchResults ?
                 <div className="body-container">
                     <List>
-                        <ResautantCard restaurant={{id:1,type:"italian",name:"Tamara",address:{city:"Rehovot",street:"herzel",street_number:1},grades:[{date:"2020-10-10",grade:'A',score:"10"},{date:"2020-10-10",grade:'B',score:"19"}]}}/>
+                        {searchResults.map((result, index) => {
+                            return  <ListItem><ResautantCard  restaurant={updatedRestaurant(index,result)} /></ListItem>
+                        })}
+
                     </List>
                 </div> : <div className="body-container">
                     <Typography className="body-header" variant="h3">Please wait!</Typography>
