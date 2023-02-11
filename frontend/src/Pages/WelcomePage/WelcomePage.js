@@ -1,5 +1,5 @@
 
-import { Button, ButtonGroup, Typography } from "@mui/material"
+import { Button, ButtonGroup, CircularProgress, Typography } from "@mui/material"
 import { useEffect, useState } from "react"
 import { Header } from "src/components/Header/Header"
 import { choosingMethods } from "src/constants"
@@ -44,7 +44,8 @@ export const WelcomePage = (props) => {
                 <div className="footer">
                     <Button  style={{border: '1px solid'}} onClick={() => navigate("/restaurants")}>Search</Button>
                 </div>
-            </div> : <div className="body-container"> <Typography className="body-header" variant="h3">Please wait!</Typography></div>}
+            </div> : <div className="body-container"> <Typography className="body-header" variant="h3">Please wait!</Typography><CircularProgress /></div>}
+            
         </div>
     )
 }

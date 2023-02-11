@@ -18,6 +18,8 @@ function App() {
     requestForInitData();
   }, [])
 
+  // const [searchFilter,setSearchFilter]=useState({type:0,value:0});
+
 
   return (
     <ThemeProvider theme={theme}>
@@ -25,7 +27,7 @@ function App() {
         <BrowserRouter>
           <Routes>
             <Route path="/" element={<WelcomePage initialData={initialData} />} />
-            <Route path="/restaurants" element={<ResultsPage />} />
+            <Route path="/restaurants" element={<ResultsPage searchResults="searchResults"/>} />
             {/*<Route path="*" element={<NoPage />} /> */}
           </Routes>
         </BrowserRouter>
