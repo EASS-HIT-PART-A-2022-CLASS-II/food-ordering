@@ -44,12 +44,10 @@ function App() {
     }else if(searchFilter.id===2)
     {
       const restaurantType=initialData?.restaurantTypes.find((type)=>type.name===searchFilter.value);
-      console.log(restaurantType);
       requestRestaurantsByType(restaurantType.index)
       
     }else if(searchFilter.id===3)
     {
-      console.log(searchFilter.value);
       requestRestaurantsByDish(searchFilter.value)
     }
   }, [searchFilter])

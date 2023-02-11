@@ -14,9 +14,6 @@ const [isOpenPopover,setIsOpenPopover]=useState(false);
   const handleRecommendationClick=()=>{
     setIsOpenPopover(true);
   }
-  useEffect(()=>{
-    console.log(restaurant);
-  },[restaurant])
 
   return (
     <Card id={`restaurant${restaurant.id}`} sx={{ minWidth: 275 }}>

@@ -5,9 +5,6 @@ import { ResautantCard } from "src/components/ResautantCard/RestaurantCard"
 
 export const ResultsPage = (props) => {
     const { searchResults,restaurantTypes } = props;
-    useEffect(() => {
-     console.log(restaurantTypes);
-    }, [restaurantTypes])
 
     const updatedRestaurant=(index,restaurant)=>{
         const restaurantType=restaurantTypes.find((type)=>type.index===restaurant.type);
