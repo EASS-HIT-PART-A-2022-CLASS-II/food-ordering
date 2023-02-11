@@ -10,10 +10,11 @@ import { useNavigate } from "react-router-dom"
 
 
 export const WelcomePage = (props) => {
-    const { initialData } = props;
+    const { initialData,setSearchFilter } = props;
     const navigate = useNavigate();
     const [choosingMethod, setChoosingMethod] = useState({ label: "", id: 0 });
     const [restaurantsType, setRestaurantsType] = useState(null);
+    const [selectedValue,setSelectedValue]= useState('');
     const [dishes, setDishes] = useState(null);
 
     useEffect(() => {
@@ -24,6 +25,11 @@ export const WelcomePage = (props) => {
             setDishes(dishes)
         }
     }, [props]);
+
+    const onSearchClick=()=>{
+        setSearchFilter({id:choosingMethod.id,value:selectedValue})
+        navigate("/restaurants");
+    }
 
     return (
         <div>
@@ -39,10 +45,10 @@ export const WelcomePage = (props) => {
                     <ButtonGroup variant="outlined" color="primary" aria-label="outlined primary button group">
                         {choosingMethods.map((method) => <Button  style={{  backgroundColor: choosingMethod===method ? '#009688' : '',color: choosingMethod===method ? 'whitesmoke' : ''}}  onClick={() => setChoosingMethod(method)}>{method.label}</Button>)}
                     </ButtonGroup>
-                    <ChoosingMethods dishes={dishes} restaurantsType={restaurantsType} method={choosingMethod} />
+                    <ChoosingMethods setSelectedValue={setSelectedValue} dishes={dishes} restaurantsType={restaurantsType} method={choosingMethod} />
                 </div>
                 <div className="footer">
-                    <Button  style={{border: '1px solid'}} onClick={() => navigate("/restaurants")}>Search</Button>
+                    <Button  style={{border: '1px solid'}} onClick={onSearchClick}>Search</Button>
                 </div>
             </div> : <div className="body-container"> <Typography className="body-header" variant="h3">Please wait!</Typography><CircularProgress /></div>}
             

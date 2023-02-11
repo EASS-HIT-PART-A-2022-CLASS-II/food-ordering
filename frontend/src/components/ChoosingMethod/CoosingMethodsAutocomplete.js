@@ -3,7 +3,7 @@ import { cities } from "src/constants";
 import React from "react";
 
 export const ChoosingMethods = (props) => {
-    const { restaurantsType, dishes, method } = props;
+    const { restaurantsType, dishes, method, setSelectedValue} = props;
 
     const options = {
         0: [],
@@ -19,10 +19,23 @@ export const ChoosingMethods = (props) => {
         3: "dishes"
     }
 
+    const onChange=(event,value)=>{
+        if(method.id===1)
+        {
+            setSelectedValue(value.label)
+        }
+            
+        else{
+            setSelectedValue(value)
+        }
+    }
+    
+
     return (
         <div style={{ margin: '20px 0px' }}>
             {method.id!==0?
             <Autocomplete
+                onChange={onChange}
                 key={method.id}
                 autoComplete
                 disablePortal
